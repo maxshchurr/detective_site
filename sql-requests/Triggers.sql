@@ -19,7 +19,6 @@ $$ language plpgsql
 
 
 
-
 CREATE TRIGGER check_assistant_status_after_new_task_trg
 AFTER INSERT ON tasks  
 FOR EACH ROW 
@@ -61,7 +60,7 @@ BEGIN
 	update agency_employees
     set status=
 	case  when quantity_of_tasks = 1 then 'Available'
-				   else 'Busy'
+				                     else 'Busy'
 	end
 	
   where id=old.employees_id;	
@@ -99,13 +98,13 @@ BEGIN
 	
    	update agency_employees
    	set status=case  when quantity_of_active_orders = 0 then 'Available'
-				    								   else 'Busy'
+				    								    else 'Busy'
    	end
 	where id = temp_manager_id;
 	
 	update agency_employees
     set status=case  when quantity_of_active_orders = 0 then 'Available'
-				   else 'Busy'
+				                                        else 'Busy'
  	end
 	where id = temp_detective_id;
 
