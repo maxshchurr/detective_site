@@ -1,17 +1,12 @@
 {% extends 'main.html' %}
-
 {% block content %}
-
-
-
 {% include 'style.html' %}
+
+
 <p><h3 style="text-align: center">Посчитать</h3></p>
 <body>
  <form method="post">
      {% csrf_token %}
-
-<!--     <p>{{rejected_by_client}}</p>-->
-
 
      <p>{{ rejected_by_client }}</p>
 
@@ -26,6 +21,7 @@
             </div>
      </form>
 </body>
+
 {% endblock %}
 
 

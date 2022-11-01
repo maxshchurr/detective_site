@@ -1,28 +1,21 @@
 {% extends 'main.html' %}
-
 {% block content %}
-
 {% include 'status.html' %}
 
 <style>
-body{
-background: url("../static/images/background-image.jpg");
-background-position: bottom;
-background-color: #ebeff5;
-
-}
-
-
-
+	body{
+	background: url("../static/images/background-image.jpg");
+	background-position: bottom;
+	background-color: #ebeff5;
+	}
 </style>
+
 
 <body>
 <div class="test">
-
 </div>
 <div class="row">
 	<div class="col-md-6">
-
 		<hr>
 		<div class="card card-body">
 
@@ -63,8 +56,6 @@ background-color: #ebeff5;
                     <th>Тип заказа</th>
 					<th>Статус</th>
 					<th>Детектив</th>
-
-
 				</tr>
 
 				{% for order in personal_orders %}
@@ -80,18 +71,14 @@ background-color: #ebeff5;
 						<td>-</td>
 						{% endif %}
 
-
-
 					</tr>
 				{% endfor %}
-
 
 			</table>
 		</div>
 	</div>
-
 </div>
 
-
 </body>
+
 {% endblock %}

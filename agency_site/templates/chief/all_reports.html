@@ -1,10 +1,5 @@
-
 {% extends 'main.html' %}
-
 {% block content %}
-
-
-
 
  <style>
    .table  {
@@ -33,16 +28,18 @@
    }
 </style>
 
+
 <body>
 <div class="row">
 	<div class="col-md-12">
 		<h5 style="text-align:center; color:#2c3333;">Отчеты детективов</h5>
 		<hr>
 		<div class="card card-body">
-							{% if reports is not None %}
+			{% if reports is not None %}
 
 			<table class="table table-sm">
 				<tr>
+
 					<th>Дата создания</th>
 					<th>Отчет</th>
 
@@ -57,14 +54,11 @@
 				{% endfor %}
 
 			</table>
-							{% endif %}
-
+			{% endif %}
 		</div>
 	</div>
-
-
 	</div>
 
-
 </body>
+
 {% endblock %}

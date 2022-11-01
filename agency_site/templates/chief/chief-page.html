@@ -1,16 +1,12 @@
 {% extends 'main.html' %}
-
 {% block content %}
-
 {% include 'status.html' %}
 
 <style>
-
 	.row{
 		margin-left: 2%;
 		margin-right: 2%;
 	}
-
 	body{
 	background: url("../static/images/background-image.jpg");
 	background-position: bottom;
@@ -21,19 +17,16 @@
     border: 2px solid grey; /* Рамка вокруг таблицы */
     margin: auto; /* Выравниваем таблицу по центру окна  */
     background-color: black;
-
    }
    .card{
 		background-color: #2c3333;
 		margin-left: 20px;
 		margin-right: 20px;
-
    }
    td {
     text-align: left; /* Выравниваем текст по центру ячейки */
     background-color; black;
     color: #2c3333;
-
    }
    th{
    background-color:#2c3333;
@@ -45,28 +38,24 @@
    	color:#2c3333;
    	text-align:center;
    }
-
 </style>
-
-
-
 
 <div class="row">
     <div class="col-md-6">
         <div class="card card-body">
             <table class="table table-sm">
                 <tr>
+
                     <th>Менеджер</th>
                     <th>Обработанныe заявки за текущий месяц</th>
                     <th>Завершенныe заявки за текущий месяц</th>
+
                 </tr>
 
                 {% for pk,manager in managers_info.items %}
                 <tr>
-
                     {% for m in manager %}
                     <td>{{m.surname}} {{m.first_name}}</td>
-
                     <td>
                         {% for emp_pk, value in count_orders_for_each_manager.items %}
                         {% if emp_pk == m.pk %}
@@ -74,7 +63,6 @@
                         {% endif %}
                         {% endfor %}
                     </td>
-
                      <td>
                         {% for emp_pk, value in count_closed_orders_for_each_manager.items %}
                         {% if emp_pk == m.pk %}
@@ -89,7 +77,6 @@
             </table>
         </div>
     </div>
-
 
     <div class="col-md-6">
         <div class="card card-body">
@@ -130,8 +117,5 @@
         </div>
     </div>
 </div>
-
-
-
 
 {% endblock %}
