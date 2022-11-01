@@ -1,0 +1,164 @@
+{% load static %}
+
+<style>
+  .hello-msg{
+    font-size: 18px;
+    color: white;
+    margin-right: 20px;
+  }
+
+
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      {% if request.user.is_staff %}
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Dashboard</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link">Detectives</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'pricing-table' %}">Pricing</a>
+      </li>
+    {% endif %}
+
+
+
+      {% if group == 'client' %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'test-client-page' %}">Главная страница</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'create-order-client' %}">Оформить заказ</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'orders-history' %}">История заказов</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'pricelist' %}">Прайс лист</a>
+      </li>
+
+
+
+
+
+      {% elif group == 'manager' %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'manager-page' %}">Главная страница</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'all-employees' %}">Информация о сотрудниках</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'all-clients' %}">Информация о клиентах</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'pricelist' %}">Таблица расценок</a>
+      </li>
+
+
+       {% elif group == 'chief' %}
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'chief-page' %}">Главная страница</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'count-income' %}">Ожидаемая прибыль</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'count-rejected-orders' %}">Отмененные заявки</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'count-new-orders-for-period' %}">Полученные заявки</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'all-employees' %}">Информация о сотрудниках</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'all-clients' %}">Информация о клиентах</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'all-reports' %}">Отчеты</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'accumulative-sum' %}">Сумма</a>
+      </li>
+
+
+
+
+      {% elif group == 'detective' %}
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'detective-page' %}">Главная страница</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'detective-history-of-orders' %}">История ваших заявок</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'detective-assistants' %}">Ваши помощники</a>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'detective-assistant-tasks' %}">Порученные задачи</a>
+      </li>
+
+
+
+
+
+
+
+   {% elif group == 'assistant' %}
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'assistant-page' %}">Главная страница</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url  'all-clients' %}">Информация о клиентах</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'assistant-history-of-finished-tasks' %}">История ваших завершенных задач</a>
+      </li>
+
+
+
+       {% endif %}
+
+
+    </ul>
+  </div>
+
+  <span class="hello-msg">Hello, {{ user.username }}</span>
+  <span> <a class="hello-msg" href="{% url 'client-logout' %}">Logout</a></span>
+
+</nav>
+

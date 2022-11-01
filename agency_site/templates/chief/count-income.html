@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'style.html' %}
+
+<p><h3 style="text-align: center">Ожидаемая прибыль</h3></p>
+<body>
+ <form method="post">
+     {% csrf_token %}
+
+    <p>{{ total }}</p>
+     {{ form.label }}
+     {{ form.as_p }}
+
+
+<div class = 'button'>
+            <button style="background-color:black"
+                    class="btn btn-primary" type="submit" >
+                    <p style="text-align:center">Посчитать</p>
+            </button>
+            </div>
+     </form>
+</body>
+
+{% endblock %}

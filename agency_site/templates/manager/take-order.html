@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+
+<body>
+    <form method="post">
+        {% csrf_token %}
+
+
+        <h5>Имя клиента:</h5>
+        <p>{{order_detail.client.full_name}}</p>
+
+        <h5>Комментарий клиента:</h5>
+        <textarea name="client-comment" id="client-comment" cols="50" rows="10" readonly>{{order_detail.client_comment}}</textarea>
+
+        <h5>Выберите коэффициэнт для заявки:</h5>
+        <p><input type="number" id="rate" name="rate" min="1" max="5" value={{order_detail.rate}}> </p>
+
+<!--        {% for field in form %}-->
+<!--            <p>-->
+<!--                {{field.label_tag}}-->
+<!--                {{field}}-->
+<!--                {% for error in field.errors %}-->
+<!--                    <p style="color: red;">{{error}}</p>-->
+<!--                {% endfor %}-->
+<!--            </p>-->
+<!--            {% endfor %}-->
+
+
+            <div class = 'button'>
+            <button
+                    class="btn btn-dark" type="submit" >
+                    Отправить клиенту
+            </button>
+            </div>
+
+         </form>
+</body>
+
+{% endblock %}

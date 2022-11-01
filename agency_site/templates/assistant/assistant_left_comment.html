@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+{% include 'style.html' %}
+
+<body>
+<h5>Оставить комментарий к заданию</h5>
+ <form method="post">
+            {% csrf_token %}
+
+            <textarea rows="15" cols="75"
+             maxlength="500" placeholder="Оставьте свой комментарий к полученному заданию (500 слов макс.)" name="new_comment" >
+
+            </textarea>
+
+
+            <div class = 'button' style="margin-top: 10px;">
+            <button
+                    class="btn btn-dark" type="submit"
+                    style="text-align:center">Отправить
+            </button>
+            </div>
+
+        </form>
+
+</body>
+{% endblock %}

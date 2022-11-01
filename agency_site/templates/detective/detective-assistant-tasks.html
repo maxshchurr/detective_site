@@ -1,0 +1,56 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+{% include 'style.html' %}
+<body>
+
+    <div class="row">
+		<div class="col-md-12">
+		<h5>Порученные задачи</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+
+					<th>Дата задания</th>
+					<th>Описание задания</th>
+                    <th>Имя помощника</th>
+                    <th>Отчет</th>
+					<th></th>
+
+				</tr>
+
+				{% for task in tasks %}
+					<tr>
+                        <td>{{task.task_date}}</td>
+						<td>{{task.task_description}}</td>
+                        <td>{{task.employees.first_name}}  {{task.employees.surname}}</td>
+
+
+						{% if comments.task.pk != 0  %}
+						<td><a class="btn btn-sm btn-info" href="{% url 'show-assistant-comment' task.pk %}">Показать отчеты</a></td>
+						{% endif %}
+
+						<form action="#" method="get">
+
+								<td><a class="btn btn-sm btn-danger" href="{% url 'detective-delete-task' task.pk %}" >Удалить задачу</a></td>
+
+						</form>
+					</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+    </div>
+
+
+
+</body>
+{% endblock %}

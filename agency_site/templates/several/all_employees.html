@@ -1,0 +1,79 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+
+ <style>
+   .table  {
+    width: 80%; /* Ширина таблицы */
+    border: 2px solid grey; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    background-color: black;
+
+   }
+   .card{
+		background-color: #2c3333;
+		margin-left: 20px;
+		margin-right: 20px;
+
+   }
+   td {
+    text-align: left; /* Выравниваем текст по центру ячейки */
+    background-color; black;
+    color: #2c3333;
+
+   }
+   th{
+   background-color:#2c3333;
+   color: #A5c9ca;
+   text-align:center;
+   }
+   td{
+    background-color: #A5c9ca;
+   	color:#2c3333;
+   	text-align:center;
+   }
+   body{
+   background-color:#e7f6f2;
+   }
+</style>
+
+<body>
+<div class="row">
+	<div class="col-md-12">
+		<h5 style="text-align:center; color:#2c3333;">Сотрудники</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Имя сотрудника</th>
+					<th>Фамилия сотрудника</th>
+					<th>Должность</th>
+                    <th>Статус</th>
+                    <th>Почта сотрудника</th>
+				</tr>
+
+				{% for empl in employees %}
+					<tr>
+						<td>{{empl.first_name}}</td>
+                        <td>{{empl.surname}}</td>
+						<td>{{empl.position}}</td>
+                        <td>{{empl.status}}</td>
+                        <td>{{empl.e_email}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+
+</div>
+
+
+</body>
+{% endblock %}

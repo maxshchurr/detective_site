@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+<style>
+
+    h4{
+    text-align: center;
+    }
+
+    div.justified {
+        display: flex;
+        justify-content: center;
+        color: red;
+        padding: 10px;
+        text-align:left;
+
+    }
+
+</style>
+
+<body>
+
+    <h4>Комментарий клиента {{this_order.client.full_name}} к заявке типа {{this_order.type_of_order.type}}</h4>
+    <div class="justified">
+    <p>
+        <textarea disabled name="client-comment"  cols="50" rows="10">
+        {{this_order.client_comment}}
+        </textarea>
+    </p>
+    </div>>
+
+</body>
+
+{% endblock %}

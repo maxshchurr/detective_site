@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-7">
+		<h5>New orders:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
+			<table class="table table-sm">
+				<tr>
+
+					<th>Client</th>
+					<th>Type of order</th>
+					<th>Created at</th>
+					<th>Status</th>
+					<th>Consider</th>
+
+				</tr>
+
+				{% for order in orders %}
+                        <tr>
+                            <td>{{ order.client.full_name }}</td>
+                            <td>{{ order.type_of_order.type }}</td>
+                            <td>{{ order.created_at }}</td>
+							<td>{{ order.status }}</td>
+							<td><a class="btn btn-sm btn-success" href="/"> Consider</a></td>
+
+                        </tr>
+                    {% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-5">
+		<h5>Detectives</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Order</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Detective</th>
+					<th>Status</th>
+
+				</tr>
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock %}

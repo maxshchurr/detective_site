@@ -1,0 +1,92 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+
+ <style>
+   .table  {
+    width: 80%; /* Ширина таблицы */
+    border: 1px solid grey; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    background-color: black;
+   }
+   td {
+    text-align: left; /* Выравниваем текст по центру ячейки */
+    background-color; black;
+    color: #2c3333;
+   }
+   th{
+   background-color:#2c3333;
+   color:#A5c9ca;
+   text-align:center;
+   }
+   td{
+    background-color:A5c9ca;
+   	color:#2c3333;
+   	text-align:center;
+   }
+   body{
+   background-color:#e7f6f2;
+   }
+   .card{
+		background-color: #2c3333;
+		margin-left: 20px;
+		margin-right: 20px;
+
+   }
+   .btn{
+   margin-top: 20px;
+   margin-left: 20px;
+   }
+</style>
+
+<body>
+<div class="row">
+	<div class="col-md-12">
+		<h5 style="text-align:center; color:#2c3333;">Накопительная суммарная стоимость заявок за текущий год</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+                <tr>
+					<th>Месяц</th>
+					<th>Доход за месяц</th>
+					<th>Накопительный доход</th>
+
+				</tr>
+
+				{% for month, val in acc_sum.items %}
+					<tr>
+
+						<td>{{month}}</td>
+						<td>{{val.0}}</td>
+						<td>{{val.1}}</td>
+
+                    </tr>
+
+				{% endfor %}
+
+
+
+			</table>
+
+
+		</div>
+	</div>
+
+
+</div>
+
+
+<a class="btn btn-sm btn-dark" href="{% url 'count-income-for-specific-type' %}">
+	<h6>Посчитать полученную сумму за заказы определенного типа </h6>
+</a>
+
+
+
+
+</body>
+{% endblock %}

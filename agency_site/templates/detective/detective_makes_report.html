@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+<style>
+
+
+
+    div.justified {
+        display: flex;
+        justify-content: center;
+        color: red;
+        padding: 10px;
+        text-align:left;
+    }
+
+</style>
+
+<body>
+        <form method="post">
+            {% csrf_token %}
+
+            <h4 style="text-align:center;">Составить отчет</h4>
+
+    <div class="justified">
+        <textarea rows="20" cols="75"
+          maxlength="250" name="detectives_report" required></textarea>
+    </div>
+
+
+        <div class = 'button'>
+            <button
+                    class="btn btn-sm btn-danger" type="submit">
+                    <p>Составить отчет</p>
+            </button>
+            </div>
+             </form>
+</body>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+
+<body>
+<div class="row">
+	<div class="col-md-5">
+		<h5>CUSTOMERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Ваши заявки на рассмотрении</a>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Client</th>
+					<th>Phone</th>
+				</tr>
+
+				{% for order in new_orders %}
+					<tr>
+						<td>{{order.client.full_name}}</td>
+                        <td>{{ order.created_at }}</td>
+						<td>{{order.type_of_order.type}}</td>
+						<td>{{order.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="">Update</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
+
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Возвращенные заявки</a>
+			<table class="table table-sm">
+				<tr>
+					<th>CLient's name</th>
+					<th>Date Ordered</th>
+                    <th>Type of order</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for order in orders_on_review %}
+					<tr>
+						<td>{{order.client.full_name}}</td>
+                        <td>{{ order.created_at }}</td>
+						<td>{{order.type_of_order.type}}</td>
+						<td>{{order.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="">Принять</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="">Отменить заказ</a></td>
+
+					</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+</body>
+{% endblock %}

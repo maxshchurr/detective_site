@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+{% include 'style.html' %}
+<body>
+
+    <div class="row">
+		<div class="col-md-12">
+		<h5>Отчет сотрудника</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+
+					<th>Имя</th>
+					<th>Дата комментария</th>
+					<th>Отчет сотрудника</th>
+
+				</tr>
+
+				{% for comment in assistant_comment %}
+				<tr>
+					<td>{{comment.employees.first_name}} {{comment.employees.surname}}</td>
+					<td>{{comment.created_at}}</td>
+					<td>{{comment}}</td>
+				{% endfor %}
+				</tr>
+
+			</table>
+		</div>
+	</div>
+    </div>
+
+
+
+</body>
+{% endblock %}

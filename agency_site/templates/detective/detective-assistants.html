@@ -1,0 +1,77 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+{% include 'style.html' %}
+
+<style>
+   .table  {
+    width: 80%; /* Ширина таблицы */
+    border: 1px solid grey; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    background-color: black;
+   }
+   td {
+    text-align: left; /* Выравниваем текст по центру ячейки */
+    background-color; black;
+    color: #2c3333;
+   }
+   th{
+   background-color:#2c3333;
+   color:#A5c9ca;
+   text-align:center;
+   }
+   td{
+    background-color:A5c9ca;
+   	color:#2c3333;
+   	text-align:center;
+   }
+   body{
+   background-color:#e7f6f2;
+   }
+</style>
+
+<body>
+
+    <div class="row">
+		<div class="col-md-12">
+		<h5>Ваши подчиненные</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Имя</th>
+					<th>Фамилия</th>
+                    <th>Статус сотрудника</th>
+					<th>Стаж</th>
+					<th>Номер телефона</th>
+					<th>Почта</th>
+
+				</tr>
+
+				{% for assistant in detective_assistants_all %}
+					<tr>
+						<td>{{assistant.first_name}}</td>
+                        <td>{{assistant.surname}}</td>
+						<td>{{assistant.status}}</td>
+						<td>{{assistant.experience}}</td>
+						<td>{{assistant.tel_number}}</td>
+						<td>{{assistant.e_email}}</td>
+
+
+					</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+    </div>
+
+
+
+</body>
+{% endblock %}

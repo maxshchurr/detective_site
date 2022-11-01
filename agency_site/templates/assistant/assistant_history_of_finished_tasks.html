@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+{% include 'style.html' %}
+
+
+<body>
+<h5>Завершенные задачи</h5>
+<div class="row">
+	<div class="col-md-12">
+
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Дата задачи</th>
+					<th>Дата комментария</th>
+					<th>Task description</th>
+					<th>Тип заказа</th>
+
+				</tr>
+
+				{% for task in finished_tasks %}
+					<tr>
+						<td>{{ task.task.task_date }}</td>
+						<td>{{ task.created_at }}</td>
+						<td>{{ task.assistant_comments }}</td>
+						<td>{{ task.task.orders.type_of_order.type }}</td>
+
+
+
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'style.html' %}
+
+<style>
+
+	.row{
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top: 2%;
+	}
+    .button{
+        margin-top: 2%;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Детектив</th>
+                    <th>Завершенные заказы за выбранный период</th>
+
+                </tr>
+
+                {% for pk,detective in detectives_info.items %}
+                <tr>
+
+                    {% for det in detective %}
+                    <td>{{det.surname}} {{det.first_name}}</td>
+
+                    <td>
+                        {% for emp_pk, value in count_orders_for_each_detective.items %}
+                        {% if emp_pk == det.pk %}
+                        {{value}}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+
+                    {% endfor %}
+
+                </tr>
+                 {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+ <form method="post">
+     {% csrf_token %}
+
+     {{ form.label }}
+     {{ form.as_p }}
+
+
+            <div class = 'button'>
+            <button style="background-color:black"
+                    class="btn btn-primary" type="submit" >
+                    <p style="text-align:center">Посчитать</p>
+            </button>
+            </div>
+ </form>
+
+
+{% endblock %}

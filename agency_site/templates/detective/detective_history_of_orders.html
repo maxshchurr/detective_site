@@ -1,0 +1,48 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+{% include 'style.html' %}
+<body>
+
+    <div class="row">
+		<div class="col-md-12">
+		<h5>История ваших заявок</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+
+					<th>Имя клиента</th>
+					<th>Дата создания</th>
+                    <th>Статус заявки</th>
+					<th>Тип заявки</th>
+					<th>Менеджер</th>
+
+				</tr>
+
+				{% for order in detective_orders %}
+					<tr>
+                        <td>{{order.client.full_name}}</td>
+						<td>{{order.created_at}}</td>
+                        <td>{{order.status}}</td>
+						<td>{{order.type_of_order.type}}</td>
+						<td>{{order.manager.first_name}} {{order.manager.surname}}</td>
+
+					</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+    </div>
+
+
+
+</body>
+{% endblock %}

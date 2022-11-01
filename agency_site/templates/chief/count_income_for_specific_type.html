@@ -1,0 +1,112 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'style.html' %}
+
+<style>
+
+    .types_of_orders{
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    }
+
+    .button{
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    }
+
+       .table  {
+    width: 80%; /* Ширина таблицы */
+    border: 1px solid grey; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    background-color: black;
+   }
+   td {
+    text-align: left; /* Выравниваем текст по центру ячейки */
+    background-color; black;
+    color: #2c3333;
+   }
+   th{
+   background-color:#2c3333;
+   color: #A5c9ca;
+   text-align:center;
+   }
+   td{
+    background-color:A5c9ca;
+   	color:#2c3333;
+   	text-align:center;
+   }
+   body{
+   background-color:#e7f6f2;
+   }
+   .card{
+		background-color: #2c3333;
+		margin-left: 20px;
+		margin-right: 20px;
+
+   }
+
+
+</style>
+
+
+
+
+<body>
+
+<div class="row">
+	<div class="col-md-12">
+		<h5 style="text-align:center; color:#2c3333;">Полученная сумма за заказ выбранного типа</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+                <tr>
+					<th>Тип заказа</th>
+					<th>Заплаченная клиентами сумма</th>
+				</tr>
+
+
+				<tr>
+
+					<td>{{selected_type}}</td>
+					<td>{{income_for_type}}</td>
+
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+
+<form method="post">
+     {% csrf_token %}
+	 <div class="types_of_orders">
+	<select name="type" id="types">
+    {% for type in types %}
+  	<option value="{{type}}" style="background-color: #A5c9ca;">{{type}}</option>
+    {% endfor %}
+</select>
+</div>
+
+
+	<input type="submit" name="calculate" value="Рассчитать"
+		   style="background-color: #2c3333; color: white;
+		   margin-top: 45px; margin-left: 20px; border-color: #A5c9ca;">
+
+ </form>
+
+
+</body>
+
+{% endblock %}

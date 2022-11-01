@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+<style>
+
+    body{
+			background-color: #ebeff5;
+
+		}
+
+</style>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order creation page</title>
+    <h5 style="text-align:center">Оформить заказ</h5>
+</head>
+<body>
+<div>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <p>
+                {{field.label_tag}}
+                {{field}}
+                {% for error in field.errors %}
+                    <p style="color: red;">{{error}}</p>
+                {% endfor %}
+
+            {% endfor %}
+
+
+            <div class = 'button'>
+            <button
+                    class="btn btn-dark" type="submit" >
+                    <p style="text-align:center">Отправить</p>
+            </button>
+            </div>
+
+        </form>
+    </div></body>
+
+{% endblock %}

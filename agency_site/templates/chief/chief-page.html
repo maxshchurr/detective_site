@@ -1,0 +1,137 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+<style>
+
+	.row{
+		margin-left: 2%;
+		margin-right: 2%;
+	}
+
+	body{
+	background: url("../static/images/background-image.jpg");
+	background-position: bottom;
+	background-color: #ebeff5;
+
+    .table  {
+    width: 80%; /* Ширина таблицы */
+    border: 2px solid grey; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    background-color: black;
+
+   }
+   .card{
+		background-color: #2c3333;
+		margin-left: 20px;
+		margin-right: 20px;
+
+   }
+   td {
+    text-align: left; /* Выравниваем текст по центру ячейки */
+    background-color; black;
+    color: #2c3333;
+
+   }
+   th{
+   background-color:#2c3333;
+   color: #A5c9ca;
+   text-align:center;
+   }
+   td{
+    background-color: #A5c9ca;
+   	color:#2c3333;
+   	text-align:center;
+   }
+
+</style>
+
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Менеджер</th>
+                    <th>Обработанныe заявки за текущий месяц</th>
+                    <th>Завершенныe заявки за текущий месяц</th>
+                </tr>
+
+                {% for pk,manager in managers_info.items %}
+                <tr>
+
+                    {% for m in manager %}
+                    <td>{{m.surname}} {{m.first_name}}</td>
+
+                    <td>
+                        {% for emp_pk, value in count_orders_for_each_manager.items %}
+                        {% if emp_pk == m.pk %}
+                        {{value}}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+
+                     <td>
+                        {% for emp_pk, value in count_closed_orders_for_each_manager.items %}
+                        {% if emp_pk == m.pk %}
+                        {{value}}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    {% endfor %}
+
+                </tr>
+                 {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <div class="card card-body">
+            <a class="btn btn-sm btn-dark" href="{% url 'closed-orders-for-period-for-detectives' %}"><h6>Посчитать завершенные заказы за выбранный период</h6></a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Детектив</th>
+                    <th>Обработанные заявки за текущий месяц</th>
+                    <th>Завершенныe заявки за текущий месяц</th>
+                </tr>
+
+                {% for pk,detective in detectives_info.items %}
+                <tr>
+
+                    {% for det in detective %}
+                    <td>{{det.surname}} {{det.first_name}}</td>
+
+                    <td>
+                        {% for emp_pk, value in count_orders_for_each_detective.items %}
+                        {% if emp_pk == det.pk %}
+                        {{value}}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+
+                     <td>
+                        {% for emp_pk, value in count_closed_orders_for_each_detective.items %}
+                        {% if emp_pk == det.pk %}
+                        {{value}}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    {% endfor %}
+
+                </tr>
+                 {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<br>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5 style="text-align:center">PRICING TABLE</h5>
+            </div>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Expected days</th>
+                    </tr>
+
+                    {% for type in types %}
+                        <tr>
+                            <td>{{ type.type }}</td>
+                            <td>{{ type.price }}</td>
+                            <td>{{ type.expected_days }}</td>
+
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

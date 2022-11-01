@@ -1,0 +1,97 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+<style>
+body{
+background: url("../static/images/background-image.jpg");
+background-position: bottom;
+background-color: #ebeff5;
+
+}
+
+
+
+</style>
+
+<body>
+<div class="test">
+
+</div>
+<div class="row">
+	<div class="col-md-6">
+
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Клиент</th>
+					<th>Номер телефона</th>
+					<th>Статус заказа</th>
+					<th>Тип заказа</th>
+					<th>Рассмотреть</th>
+				</tr>
+
+				{% for order in orders_in_process %}
+					<tr>
+
+						<td>{{order.client.full_name}}</td>
+						<td>{{order.client.tel_number}}</td>
+						<td>{{order.type_of_order.type}}</td>
+						<td>{{order.status}}</td>
+
+						<td><a class="btn btn-sm btn-info" href="{% url 'take-order-manager' order.pk %}">Рассмотреть</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'reject-order-manager' order.pk %}">Отклонить</a></td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Клиент</th>
+					<th>Дата</th>
+                    <th>Тип заказа</th>
+					<th>Статус</th>
+					<th>Детектив</th>
+
+
+				</tr>
+
+				{% for order in personal_orders %}
+					<tr>
+						<td>{{order.client.full_name}}</td>
+                        <td>{{ order.created_at }}</td>
+						<td>{{order.type_of_order.type}}</td>
+						<td>{{order.status}}</td>
+
+						{% if order.detective is not None %}
+						<td>{{order.detective.first_name}} {{order.detective.surname}}</td>
+						{% else %}
+						<td>-</td>
+						{% endif %}
+
+
+
+					</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+</body>
+{% endblock %}

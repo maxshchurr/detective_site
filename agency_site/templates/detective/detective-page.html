@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+<style>
+
+body{
+background: url("../static/images/background-image.jpg");
+background-position: bottom;
+background-color: #ebeff5;
+
+}
+
+</style>
+
+<body>
+<div class="row">
+	<div class="col-md-5">
+		<h5>Новые заявки</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Date Ordered</th>
+					<th>Type of order</th>
+					<th>Status</th>
+				</tr>
+
+				{% for order in paid_orders %}
+					<tr>
+                        <td>{{ order.created_at }}</td>
+						<td>{{order.type_of_order.type}}</td>
+						<td>{{order.status}}</td>
+
+                        <td><a class="btn btn-sm btn-dark" href="{% url 'detective-takes-order' order.pk %}">Взять заявку</a></td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Ваши активные заявки</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Client</th>
+					<th>Date Ordered</th>
+                    <th>Type of order</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+					<th></th>
+
+				</tr>
+
+				{% for order in personal_orders %}
+					<tr>
+						<td>{{order.client.full_name}}</td>
+                        <td>{{ order.created_at }}</td>
+						<td>{{order.type_of_order.type}}</td>
+						<td>{{order.status}}</td>
+
+						<td><a class="btn btn-sm btn-info" href="{% url 'detective-show-client-comment' order.pk %}">Комментарий клиента</a></td>
+						<td><a class="btn btn-sm btn-warning" href="{% url 'detective-assign-task' order.pk %}">Поручить задачу</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'detective-makes-report' order.pk %}">Составить отчет</a></td>
+
+					</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+</body>
+{% endblock %}

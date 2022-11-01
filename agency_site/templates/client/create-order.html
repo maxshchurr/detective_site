@@ -1,0 +1,36 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order creation page</title>
+
+</head>
+<body>
+<h5>Оформить заказ</h5>
+<div>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <p>
+                {{field.label_tag}}
+                {{field}}
+                {% for error in field.errors %}
+                    <p style="color: red;">{{error}}</p>
+                {% endfor %}
+            </p>
+            {% endfor %}
+
+
+            <div class = 'button'>
+            <button
+                    class="btn btn-primary" type="submit" >
+                    <p style="text-align:center">Create order</p>
+            </button>
+            </div>
+
+        </form>
+    </div></body>
+</html>

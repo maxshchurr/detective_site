@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'style.html' %}
+<!--<body>-->
+
+<!-- <form method="post">-->
+<!--            {% csrf_token %}-->
+
+<!--<label for="cars">Choose the assistant:</label>-->
+<!--    <select name="assistant" id="assistant">-->
+<!--    {% for assistant in assistants %}-->
+<!--  <option name="assistant">Name:{{assistant.first_name}} {{assistant.surname}}.Status:{{assistant.status}} PK: {{assistant.pk}}</option>-->
+<!--    {% endfor %}-->
+
+<!--</select>-->
+
+
+<!--    <textarea-->
+<!--          maxlength="200" name="description">-->
+
+
+<!--        </textarea>-->
+
+<!--     <div class = 'button'>-->
+<!--            <button-->
+<!--                    class="btn btn-primary" type="submit" >-->
+<!--                    <p style="text-align:center">Поручить задачу</p>-->
+<!--            </button>-->
+<!--            </div>-->
+
+<!--    </form>-->
+<!--</body>-->
+
+
+
+
+<!--<body>-->
+<!--<div>-->
+<!--        <form method="post">-->
+<!--            {% csrf_token %}-->
+
+
+<!--            <h4>Опишите задание помощнику</h4>-->
+<!--            {{form.task_description}}-->
+<!--            <h4>Выберите помощника из списка:</h4>-->
+<!--            <p name="assistant">{{form.assistant}}</p>-->
+<!--                {% for error in field.errors %}-->
+<!--                    <p style="color: red;">{{error}}</p>-->
+
+
+<!--                {% endfor %}-->
+
+
+<!--            <div class = 'button'>-->
+<!--            <button-->
+<!--                    class="btn btn-primary" type="submit" >-->
+<!--                    <p style="text-align:center">Поручить задание</p>-->
+<!--            </button>-->
+<!--            </div>-->
+
+<!--        </form>-->
+<!--    </div></body>-->
+
+<!--</html>-->
+
+
+
+
+<body>
+
+<form method="post">
+     {% csrf_token %}
+
+       <div class="justified">
+        <textarea rows="20" cols="75"
+          maxlength="1000" name="assign_task" required></textarea>
+    </div>
+
+    <div class="types_of_orders" style="margin-left: 20px; margin-top: 20px;">
+	<select name="type" id="types">
+    {% for type in types %}
+  	<option value="{{type.pk}}" style="background-color: #A5c9ca;">{{type}}</option>
+    {% endfor %}
+</select>
+
+</div>
+
+
+	<input type="submit" name="calculate" value="Поручить задачу"
+		   style="background-color: #2c3333; color: white;
+		   margin-top: 45px; margin-left: 20px; border-color: #A5c9ca;">
+
+ </form>
+
+
+</body>
+
+{% endblock %}

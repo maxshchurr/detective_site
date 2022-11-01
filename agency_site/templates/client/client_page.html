@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+
+<style>
+
+	.row{
+		margin-left: 2%;
+	}
+
+	body{
+	background: url("../static/images/background-image.jpg");
+	background-position: bottom;
+	background-color: #ebeff5;
+
+}
+</style>
+
+
+<body>
+<div class="row">
+	<div class="col-md-5">
+		<h5>Ваши заявки на рассмотрении</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Date Ordered</th>
+					<th>Type of order</th>
+					<th>Status</th>
+				</tr>
+
+				{% for order in new_orders %}
+					<tr>
+                        <td>{{ order.created_at }}</td>
+						<td>{{order.type_of_order.type}}</td>
+						<td>{{order.status}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Возвращенные заявки</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Дата создания</th>
+                    <th>Тип заказа</th>
+					<th>Статус</th>
+					<th>Цена/Коэффициент</th>
+					<th>Оплатить</th>
+					<th>Отклонить</th>
+				</tr>
+
+				{% for order in orders_on_review %}
+
+					<tr>
+						<td>{{order.created_at }}</td>
+                        <td>{{order.type_of_order.type}}</td>
+						<td>{{order.status}}</td>
+						<td>{{order.type_of_order.price}} * {{order.rate}}</td>
+						{% if order.status == 'Pending client' %}
+
+						<td><a class="btn btn-sm btn-info" href="{% url 'client-pays-for-order' order.pk %}">Оплатить заказ</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'client-rejects-order' order.pk %}">Отменить заказ</a></td>
+						{% endif %}
+					</tr>
+
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+</body>
+{% endblock %}

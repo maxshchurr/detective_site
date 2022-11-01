@@ -1,0 +1,91 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% include 'status.html' %}
+
+
+ <style>
+   .table  {
+    width: 80%; /* Ширина таблицы */
+    border: 2px solid grey; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    background-color: #A5c9ca;
+
+   }
+   .card{
+		background-color: #2c3333;
+		margin-left: 20px;
+		margin-right: 20px;
+
+   }
+   td {
+    text-align: left; /* Выравниваем текст по центру ячейки */
+    background-color; red;
+    color: #2c3333;
+
+   }
+   th{
+   background-color:#2c3333;
+   color: #A5c9ca;
+   text-align:center;
+   }
+   td{
+    background-color: #A5c9ca;
+   	color:#2c3333;
+   	text-align:center;
+   }
+   body{
+   background-color:#e7f6f2;
+   }
+</style>
+
+<body>
+<div class="row">
+	<div class="col-md-12">
+		<h5 style="text-align:center; color:#2c3333;">История ваших заказов</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Дата создания заказа</th>
+					<th>Тип заказа</th>
+					<th>Изначальная стоимость услуги</th>
+					<th>Окончательная цена</th>
+					<th>Статус заказа</th>
+					<th>Отчет детектива</th>
+
+				</tr>
+
+				{% for order in orders %}
+					<tr>
+						<td>{{order.created_at}}</td>
+                        <td>{{order.type_of_order.type}}</td>
+						<td>{{order.type_of_order.price}}</td>
+						<td>{{order.get_full_price}}</td>
+						<td>{{order.status}}</td>
+
+
+						{% if reports.orders.pk == order.pk %}
+						<td><a class="btn btn-sm btn-info" href="{% url 'client-view-report' report.pk %}">Рассмотреть</a></td>
+						{% else %}
+						<td>-</td>
+						{% endif %}
+
+
+					</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+
+	</div>
+
+
+</body>
+{% endblock %}
