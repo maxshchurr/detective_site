@@ -1,9 +1,6 @@
 {% extends 'main.html' %}
-
 {% block content %}
-
 {% include 'status.html' %}
-
 {% include 'style.html' %}
 
 
@@ -11,10 +8,8 @@
 <h5>Завершенные задачи</h5>
 <div class="row">
 	<div class="col-md-12">
-
 		<hr>
 		<div class="card card-body">
-
 			<table class="table table-sm">
 				<tr>
 					<th>Дата задачи</th>
@@ -30,9 +25,6 @@
 						<td>{{ task.created_at }}</td>
 						<td>{{ task.assistant_comments }}</td>
 						<td>{{ task.task.orders.type_of_order.type }}</td>
-
-
-
 					</tr>
 				{% endfor %}
 

@@ -1,13 +1,9 @@
 {% extends 'main.html' %}
-
 {% block content %}
-
 {% include 'status.html' %}
-
 {% include 'style.html' %}
 
 <style>
-
 	.row{
 		margin-left: 10%;
 	}
@@ -16,22 +12,19 @@
 	background: url("../static/images/background-image.jpg");
 	background-position: bottom;
 	background-color: #ebeff5;
-
 }
-
 </style>
 
+
 <body>
-
-
 <div class="row">
 	<div class="col-md-10">
 		<h5>Новые заявки</h5>
 		<hr>
 		<div class="card card-body">
-
 			<table class="table table-sm">
 				<tr>
+
 					<th>Task date</th>
 					<th>Task description</th>
 
@@ -39,11 +32,11 @@
 
 				{% for task in assistant_tasks %}
 					<tr>
+
                         <td>{{ task.task_date }}</td>
 						<td>{{ task.task_description }}</td>
-
-
                         <td><a class="btn btn-sm btn-dark" href="{% url 'assistant-left-comment' task.pk %}">Оставить комментарий</a></td>
+
 					</tr>
 				{% endfor %}
 

@@ -1,11 +1,9 @@
 {% extends 'main.html' %}
-
 {% block content %}
-
 {% include 'status.html' %}
 
-<style>
 
+<style>
     h4{
     text-align: center;
     }
@@ -16,13 +14,11 @@
         color: red;
         padding: 10px;
         text-align:left;
-
     }
-
 </style>
 
-<body>
 
+<body>
     <h4>Комментарий клиента {{this_order.client.full_name}} к заявке типа {{this_order.type_of_order.type}}</h4>
     <div class="justified">
     <p>
