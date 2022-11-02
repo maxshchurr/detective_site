@@ -10,7 +10,6 @@ header {
 
 /* Style the footer */
 footer {
-
   text-align: center;
   color: dark;
   position:fixed;
@@ -19,8 +18,6 @@ footer {
   width: 100%;
   padding: 8px;
 }
-
-
 
 		#logo{
 		}
@@ -52,7 +49,6 @@ footer {
 
 		}
 
-
 		#orders-delivered{
 		    color: red;
 			background-color: #CECDD2;
@@ -62,10 +58,5 @@ footer {
 		color: red;
 			background-color: #CECDD2;
 		}
-
-
-
-
-
 
 </style>
