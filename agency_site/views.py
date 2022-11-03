@@ -126,7 +126,7 @@ def test_login(request):
     else:
         form = TestClientLogin()
     ctx['form'] = form
-    return render(request, 'test/test-client/test-client-login.html', ctx)
+    return render(request, 'client/client-login.html', ctx)
 
 
 def test_client_logout(request):
@@ -166,7 +166,7 @@ def test_create_order(request):
         form = TestCreateOrder()
     ctx['form'] = form
 
-    return render(request, 'test/test-client/test-create-order.html', ctx)
+    return render(request, 'client/create-order.html', ctx)
 
 
 # @login_required(login_url='client-login')
