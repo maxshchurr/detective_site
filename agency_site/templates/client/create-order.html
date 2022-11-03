@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'main.html' %}
+{% block content %}
+{% include 'status.html' %}
+<style>
+    body{
+		background-color: #ebeff5;
+		}
+</style>
+
+
 <head>
     <meta charset="UTF-8">
     <title>Order creation page</title>
+    <h5 style="text-align:center">Оформить заказ</h5>
 </head>
 <body>
-<h5>Оформить заказ</h5>
 <div>
         <form method="post">
             {% csrf_token %}
@@ -16,18 +24,19 @@
                 {% for error in field.errors %}
                     <p style="color: red;">{{error}}</p>
                 {% endfor %}
-            </p>
+
             {% endfor %}
 
 
             <div class = 'button'>
             <button
-                    class="btn btn-primary" type="submit" >
-                    <p style="text-align:center">Create order</p>
+                    class="btn btn-dark" type="submit" >
+                    <p style="text-align:center">Отправить</p>
             </button>
             </div>
 
         </form>
     </div>
 </body>
-</html>
+
+{% endblock %}
