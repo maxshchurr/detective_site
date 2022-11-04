@@ -9,10 +9,10 @@ CHIEF'S main tasks are: get financial information about detective agency (income
 get number of applications processed by detectives/managers, get number of new orders/rejected orders by the clients for a period of time, etc.
 
 Login page
-![image](https://user-images.githubusercontent.com/90902303/200081215-66449ce6-a6ee-4ac1-9e4f-9a2fc64fc6f3.png)
+![image](https://user-images.githubusercontent.com/90902303/200082023-9b7bf511-2f74-476c-964b-56fbea4d2c73.png)
 
 Registration page
-![image](https://user-images.githubusercontent.com/90902303/200081281-4d02a224-a42e-4e8e-bed6-8fb650dd9fde.png)
+![image](https://user-images.githubusercontent.com/90902303/200082090-17e10e9a-87e4-4556-9655-295fd2f60a60.png)
 
 Client's main page
 ![image](https://user-images.githubusercontent.com/90902303/200081345-e6ffb1c2-84bd-4548-bff8-afec2747417a.png)
