@@ -37,3 +37,8 @@ Assistant's main page
 
 ![image](https://user-images.githubusercontent.com/90902303/200082682-c9bd167e-c472-4328-81e6-29a872d64c92.png)
 
+Chief's main page
+
+![image](https://user-images.githubusercontent.com/90902303/200083938-25ea3207-f440-4a3d-8a4b-e047cadd9ed9.png)
+
+
